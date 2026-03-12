@@ -15,16 +15,16 @@ examples = """
 Examples:
 
 Encrypt a file
-  python3 enc.py -e -f secret.txt
+  python3 main.py -e -f secret.txt
 
 Decrypt a file
-  python3 enc.py -d -f secret.txt.enc
+  python3 main.py -d -f secret.txt.enc
 
 Encrypt folder recursively
-  python3 enc.py -e -D Documents -r --types .txt .pdf
+  python3 main.py -e -D Documents -r --types .txt .pdf
 
 Decrypt folder recursively
-  python3 enc.py -d -D Documents -r
+  python3 main.py -d -D Documents -r
 """
 
 # ------------------- Key Derivation -------------------
@@ -127,7 +127,7 @@ def process_folder(folder, password, mode, recursive, types=None):
         files_to_process,
         desc=f"{mode.capitalize()}ing files",
         unit="file",
-        bar_format="{l_bar}{bar:30}{r_bar}{bar:-10b}"
+        bar_format="{l_bar}{bar}| {n_fmt}/{total_fmt} files"
     ):
         if mode == "encrypt":
             encrypt_file(path, password)
